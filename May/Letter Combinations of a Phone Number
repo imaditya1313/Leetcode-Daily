@@ -1,0 +1,71 @@
+class Solution(object):
+    def letterCombinations(self, digits):
+        arr,arr1,a11=[],[],[]
+        a1  = ["a","b","c"]
+        b1  = ["d","e","f"]
+        c1  = ["g","h","i"]
+        d1  = ["j","k","l"]
+        e1  = ["m","n","o"]
+        f1  = ["p","q","r","s"]
+        g1  = ["t","u","v"]
+        h1  = ["w","x","y","z"]
+        for i in digits:
+            arr.append(int(i))
+        for i in arr:
+            if(i==2):
+                arr1.append(a1)
+            if(i==3):
+                arr1.append(b1)
+            if(i==4):
+                arr1.append(c1)
+            if(i==5):
+                arr1.append(d1)
+            if(i==6):
+                arr1.append(e1)
+            if(i==7):
+                arr1.append(f1)
+            if(i==8):
+                arr1.append(g1)
+            if(i==9):
+                arr1.append(h1)
+        if(len(arr1)==1):
+            return arr1[0]
+        if(len(arr1)==2):
+            for i in range(0,len(arr1)):
+                for j in range(0,len(arr1[i])):
+                    a = arr1[i][j]
+                    for k in range(i+1,len(arr1)):
+                        for l in range(0,len(arr1[k])):
+                            b = a + arr1[k][l]
+                            a11.append(b)
+                            b=""
+            return a11
+        if(len(arr1)==3):
+            for i in range(0,len(arr1)):
+                for j in range(0,len(arr1[i])):
+                    a = arr1[i][j]
+                    for k in range(i+1,len(arr1)):
+                        for l in range(0,len(arr1[k])):
+                            b = a + arr1[k][l]
+                            for q in range(k+1,len(arr1)):
+                                for w in range(0,len(arr1[q])):
+                                    c = b + arr1[q][w]
+                                    a11.append(c)
+                                    c=""
+            return a11
+        if(len(arr1)==4):
+            for i in range(0,len(arr1)):
+                for j in range(0,len(arr1[i])):
+                    a = arr1[i][j]
+                    for k in range(i+1,len(arr1)):
+                        for l in range(0,len(arr1[k])):
+                            b = a + arr1[k][l]
+                            for q in range(k+1,len(arr1)):
+                                for w in range(0,len(arr1[q])):
+                                    c = b + arr1[q][w]
+                                    for y in range(q+1,len(arr1)):
+                                        for u in range(0,len(arr1[y])):
+                                            d = c + arr1[y][u]
+                                            a11.append(d)
+                                            d=""
+            return a11
