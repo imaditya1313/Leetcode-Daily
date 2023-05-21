@@ -1,0 +1,15 @@
+class Solution(object):
+    def permuteUnique(self, nums):
+        def perm(start, end=[],arr=[]):
+            if(len(start) == 0):
+                    arr.append(end)
+            else:
+                    for i in range(len(start)):
+                        perm(start[:i] + start[i+1:], end + start[i:i+1])
+            return arr
+        arr = perm(nums)
+        arr1=[]
+        for i in arr:
+            if i not in arr1:
+                arr1.append(i)
+        return arr1
