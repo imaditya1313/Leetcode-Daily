@@ -1,0 +1,11 @@
+class Solution(object):
+    def permute(self, nums):
+        def perm(start, end=[],arr=[]):
+            if(len(start) == 0):
+                arr.append(end)
+            else:
+                for i in range(len(start)):
+                    perm(start[:i] + start[i+1:], end + start[i:i+1])
+            return arr
+        return perm(nums)
+             
