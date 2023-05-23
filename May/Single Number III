@@ -1,0 +1,13 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        arr,ar,sr=[],[],[]
+        nums = sorted(nums)
+        for i in nums:
+            if i not in arr:
+                arr.append(i)
+            else:
+                sr.append(i)
+        for i in arr:
+            if i not in sr:
+                ar.append(i)
+        return ar
