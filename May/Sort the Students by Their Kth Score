@@ -1,0 +1,17 @@
+class Solution(object):
+    def sortTheStudents(self, score, k):
+        arr,arr1=[],[]
+        for i in range(0,len(score)):
+            arr.append(score[i][k])
+        arr=sorted(arr,reverse=True)
+        while(arr1!=arr):
+            arr1=[]
+            for i in range(0,len(score)-1):
+                if(score[i][k]<score[i+1][k]):
+                    temp = score[i]
+                    score[i] = score[i+1]
+                    score[i+1] = temp
+            for i in range(0,len(score)):
+                arr1.append(score[i][k])
+            ar1r=sorted(arr1,reverse=True)
+        return score
