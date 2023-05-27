@@ -1,0 +1,17 @@
+class Solution(object):
+    def arrangeWords(self, text):
+        nums,final,num1=[],[],[]
+        arr = text.split(" ")
+        for i in arr:
+            nums.append(len(i))
+        num = sorted(nums)
+        for i in num:
+            if i not in num1:
+                num1.append(i)
+        for i in num1:
+            for j in range(0,len(nums)):
+                if(nums[j]==i):
+                    final.append(arr[j])
+        a= str(" ".join(final).lower())
+        b = a.capitalize()
+        return b
