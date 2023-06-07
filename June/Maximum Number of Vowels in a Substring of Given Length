@@ -1,0 +1,15 @@
+class Solution(object):
+    def maxVowels(self, s, k):
+        count=0
+        for i in range(0,k):
+            if (s[i]=="a" or s[i]=="e" or s[i]=="i" or s[i]=="o" or s[i]=="u"):
+                count+=1
+        count1=count
+        for i in range(0,len(s)-k):
+            if (s[i]=="a" or s[i]=="e" or s[i]=="i" or s[i]=="o" or s[i]=="u"):
+                count-=1
+            if(s[i+k]=="a" or s[i+k]=="e" or s[i+k]=="i" or s[i+k]=="o" or s[i+k]=="u"):
+                count+=1
+            if(count1<count):
+                count1=count
+        return count1
