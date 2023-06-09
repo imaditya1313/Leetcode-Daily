@@ -1,0 +1,15 @@
+class Solution(object):
+    def removeElement(self, nums, val):
+        count,c=0,0
+        while(count<len(nums)):
+            count=count+1
+            for i in range(0,len(nums)-1):
+                if nums[i]==val:
+                    a=nums[i]
+                    nums[i]=nums[i+1]
+                    nums[i+1]=a
+        for i in nums:
+            if i==val:
+                c=c+1
+        nums=nums[:len(nums)-c]
+        return len(nums)
