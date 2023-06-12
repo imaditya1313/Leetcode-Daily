@@ -1,0 +1,14 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        arr,arr1=[],[]
+        for i in ransomNote:
+            arr.append(str(i))
+        for i in magazine:
+            arr1.append(str(i))
+        s=[]
+        for i in arr:
+            if i in arr1:
+                s.append(i)
+                arr1.remove(i)
+        if sorted(s)==sorted(arr):
+            return 1
