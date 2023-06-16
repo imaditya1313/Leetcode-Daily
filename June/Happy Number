@@ -1,0 +1,15 @@
+class Solution(object):
+    def isHappy(self, n):
+        arr,c=[],0
+        while(len(set(arr))==len(arr)):
+            while(n>0):
+                a=n%10
+                c=c+(a**2)
+                n=n//10
+            arr.append(c)
+            n=c
+            c=0
+            if 1 in arr:
+                return 1
+            elif len(set(arr))!=len(arr):
+                return 0
