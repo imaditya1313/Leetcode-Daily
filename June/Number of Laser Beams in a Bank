@@ -1,0 +1,17 @@
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        arr,ans=[],[]
+        c=0
+        print(bank)
+        for i in bank:
+            for j in i:
+                if j=="1":
+                    c=c+1
+            if c!=0:
+                arr.append(c)
+            c=0
+        print(arr)
+        for i in range(0,len(arr)-1):
+            ans.append(arr[i]*arr[i+1])
+        print(ans)
+        return sum(ans)
