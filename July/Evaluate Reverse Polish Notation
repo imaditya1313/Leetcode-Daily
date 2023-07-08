@@ -1,0 +1,33 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        i=0
+        while(i<len(tokens)):
+            if len(tokens)==1:
+                return int(tokens[0])
+            elif tokens[i] == "+":
+                a = int(tokens[i-2]) + int(tokens[i-1])
+                tokens[i-2] = a
+                tokens.pop(i)
+                tokens.pop(i-1)
+                i=i-2
+            elif tokens[i] == "*":
+                a = int(tokens[i-2]) * int(tokens[i-1])
+                tokens[i-2] = a
+                tokens.pop(i)
+                tokens.pop(i-1)
+                i=i-1
+            elif tokens[i] == "-":
+                a = int(tokens[i-2]) - int(tokens[i-1])
+                tokens[i-2] = a
+                tokens.pop(i)
+                tokens.pop(i-1)
+                i=i-1
+            elif tokens[i] == "/":
+                a = int(int(tokens[i-2]) / int(tokens[i-1]))
+                tokens[i-2] = a
+                tokens.pop(i)
+                tokens.pop(i-1)
+                i=i-1
+            else:
+                i=i+1
+        return tokens[0]
