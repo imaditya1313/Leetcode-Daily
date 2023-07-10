@@ -1,0 +1,14 @@
+class Solution:
+    def minOperations(self, boxes: str) -> List[int]:
+        arr=[]
+        for i in range(0,len(boxes)):
+            if boxes[i]=="1":
+                arr.append(i)
+        final=[]
+        count=0
+        for i in range(0,len(boxes)):
+            for j in arr:
+                count=count+abs(i-j)
+            final.append(count)
+            count=0
+        return final
