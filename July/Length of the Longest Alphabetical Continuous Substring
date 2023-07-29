@@ -1,0 +1,16 @@
+class Solution:
+    def longestContinuousSubstring(self, s: str) -> int:
+        s1="abcdefghijklmnopqrstuvwxyz"
+        if s in s1:
+            return len(s)
+        i,j=0,1
+        final=""
+        while(j<len(s)+1):
+            if s[i:j] in s1:
+                ans = s[i:j]
+                j=j+1
+            else:
+                i=i+1
+            if len(ans)>len(final):
+                final=ans
+        return len(final)
