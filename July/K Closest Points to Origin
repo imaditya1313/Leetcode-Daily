@@ -1,0 +1,13 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        print(len(points))
+        arr,ans=[],[]
+        final=[]
+        for i in points:
+            arr.append(i[0]**2 + i[1]**2)
+        for i in range(0,len(arr)):
+            final.append([arr[i],points[i]])
+        final=sorted(final)
+        for i in range(0,k):
+            ans.append(final[i][1])
+        return ans
