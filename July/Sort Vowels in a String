@@ -1,0 +1,20 @@
+class Solution:
+    def sortVowels(self, s: str) -> str:
+        print(100000)
+        print(len(s))
+        arr=[]
+        for i in s:
+            if i=="a" or i=="e" or i=="i" or i=="o" or i=="u" or i=="A" or i=="E" or i=="I" or i=="O" or i=="U":
+                arr.append(ord(i))
+        arr=sorted(arr)
+        for i in range(0,len(arr)):
+            arr[i]=chr(arr[i])
+        j=0
+        b=""
+        for i in s:
+            if i=="a" or i=="e" or i=="i" or i=="o" or i=="u" or i=="A" or i=="E" or i=="I" or i=="O" or i=="U":
+                b = b+arr[j]
+                j=j+1
+            else:
+                b=b+i
+        return b
