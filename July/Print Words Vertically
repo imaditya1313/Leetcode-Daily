@@ -1,0 +1,14 @@
+class Solution:
+    def printVertically(self, s: str) -> List[str]:
+        arr=s.split(" ")
+        print(arr)
+        for i in range(0,len(arr)):
+            arr[i]=arr[i]+" "*(len(max(arr, key=len))-len(arr[i]))
+        ans=[]
+        s=""
+        for i in range(0,len(arr[0])):
+            for j in range(0,len(arr)):
+                s=s+arr[j][i]
+            ans.append(s.rstrip())
+            s=""
+        return ans
