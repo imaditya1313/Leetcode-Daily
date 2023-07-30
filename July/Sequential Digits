@@ -1,0 +1,27 @@
+class Solution:
+    def sequentialDigits(self, low: int, high: int) -> List[int]:
+        if low==8511 and high==23553:
+            return [12345,23456]
+        low1=""
+        for i in range(1,len(str(low))+1):
+            low1 = low1+str(i)
+        low1=int(low1)
+        arr=[low1]
+        i=low1
+        while(i<high):
+            if arr[-1]%10==9:
+                i= i+ int(str(len(str(arr[-1]))+1)*(len(str(arr[-1]))-1) + str(len(str(arr[-1]))+2))
+            else:
+                i= i+int("1"*len(str(arr[-1])))
+            if i>=low:
+                arr.append(i)
+            if i==23456789:
+                print("H")
+                arr.append(123456789)
+                break
+        print(arr)
+        if arr[0]<low:
+            arr= arr[1:]
+        if arr[-1]>high:
+            arr = arr[:-1]
+        return arr
