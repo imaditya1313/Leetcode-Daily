@@ -1,0 +1,19 @@
+class Solution:
+    def numSmallerByFrequency(self, queries: List[str], words: List[str]) -> List[int]:
+        arr1,arr2=[],[]
+        for i in queries:
+            i=sorted(i)
+            arr1.append(i.count(i[0]))
+        for i in words:
+            i=sorted(i)
+            arr2.append(i.count(i[0]))
+        arr2 = sorted(arr2)
+        final=[]
+        for i in arr1:
+            for j in range(0,len(arr2)):
+                if arr2[j]>i:
+                    final.append(len(arr2)-j)
+                    break
+            else:
+                final.append(0)
+        return final
