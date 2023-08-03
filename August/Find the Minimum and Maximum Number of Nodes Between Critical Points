@@ -1,0 +1,19 @@
+        arr=[]
+        count=1
+        temp=head
+        while(temp.next.next!=None):
+            if temp.next.val>temp.val and temp.next.val>temp.next.next.val:
+                arr.append(count)
+            elif temp.next.val<temp.val and temp.next.val<temp.next.next.val:
+                arr.append(count)
+            count=count+1
+            temp=temp.next
+        if len(arr)<2:
+            return [-1,-1]
+        else:
+            mini=arr[1]-arr[0]
+            arr=sorted(arr)
+            for i in range(0,len(arr)-1):
+                dic = arr[i+1]-arr[i]
+                mini=min(dic,mini)
+            return [mini,arr[-1]-arr[0]]
