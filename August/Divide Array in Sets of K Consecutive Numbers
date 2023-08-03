@@ -1,0 +1,22 @@
+class Solution:
+    def isPossibleDivide(self, nums: List[int], k: int) -> bool:
+        if len(nums)%k!=0:
+            return 0
+        else:
+            nums=sorted(nums)
+            l=int(len(nums)/k)
+            i=0
+            while(i!=l):
+                count=0
+                a=nums[0]
+                nums.pop(0)
+                while(count!=k-1):
+                    if a+1 in nums:
+                        nums.remove(a+1)
+                        a=a+1
+                        count=count+1
+                    else:
+                        return 0
+                i=i+1
+        if nums==[]:
+            return 1
