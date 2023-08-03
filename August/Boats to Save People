@@ -1,0 +1,15 @@
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people = sorted(people)
+        i,j=0,len(people)-1
+        count=0
+        while(i<j):
+            if people[i]+people[j]<=limit:
+                print(i,j)
+                count=count+1
+                people.pop(i)
+                people.pop(j-1)
+                j=j-2
+            else:
+                j=j-1
+        return count+len(people)
