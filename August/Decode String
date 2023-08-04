@@ -1,0 +1,25 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        k=s.count("[")
+        i,count=0,0
+        while(i<len(s)):
+            if k==0:
+                return s
+            if s[i]=="[":
+                count=count+1
+            if count==k:
+                k=k-1
+                if (s[i-3:i]).isdigit()==False:
+                    if (s[i-2:i]).isdigit()==False:
+                        n=int(s[i-1])
+                    else:
+                        n=int(s[i-2:i])
+                else:
+                    n=int(s[i-3:i])
+                for j in range(i,len(s)):
+                    if s[j]=="]":
+                        s = s[:i-len(str(n))]+s[i+1:j]*n+s[j+1:]
+                        i,count=0,0
+                        break
+            else:
+                i=i+1
