@@ -1,0 +1,14 @@
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        if len(word1)!=len(word2) or set(word1)!=set(word2):
+            return 0
+        else:
+            arr,arr1=[],[]
+            for i in set(word1):
+                arr.append(word1.count(i))
+            for i in set(word2):
+                arr1.append(word2.count(i))
+            if sorted(arr)==sorted(arr1):
+                return 1
+            else:
+                return 0
