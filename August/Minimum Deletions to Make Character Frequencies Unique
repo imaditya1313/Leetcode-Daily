@@ -1,0 +1,20 @@
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        arr=list(set(s))
+        ans=[]
+        for i in arr:
+            ans.append(s.count(i))
+        i=0
+        ans=sorted(ans)
+        a=sum(ans)
+        while(i<len(ans)-1):
+            if ans[i]==ans[i+1]:
+                ans[i+1]=ans[i+1]-1
+                i=0
+                ans.sort()
+                if 0 in ans:
+                    ans.remove(0)
+            else:
+                i=i+1
+        b=sum(ans)
+        return a-b
