@@ -1,0 +1,15 @@
+class Solution:
+    def maximumSwap(self, num: int) -> int:
+        num=str(num)
+        maxi=sorted(num,reverse=True)
+        if "".join(maxi)==num:
+            return int(num)
+        for i in range(0,len(num)):
+            if num[i]!=maxi[i]:
+                break
+        a=maxi[i]
+        b=num[i]
+        for j in range(0,len(num)):
+            if num[j]==a:
+                k=j
+        return int(num[:i]+a+num[i+1:k]+b+num[k+1:])
