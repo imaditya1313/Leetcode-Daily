@@ -1,0 +1,21 @@
+class Solution:
+    def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
+        a=tops+bottoms
+        num=list(set(a))
+        final=[]
+        for i in num:
+            if a.count(i)>=len(tops):
+                final.append([a.count(i),i])
+        final=sorted(final,reverse=True)
+        if len(final)==0:
+            return -1
+        n=final[0][1]
+        count1,count2=0,0
+        for i in range(0,len(tops)):
+            if tops[i]!=n and bottoms[i]!=n:
+                return -1
+            elif bottoms[i]==n and tops[i]!=n:
+                count1=count1+1
+            elif tops[i]==n and bottoms[i]!=n:
+                count2=count2+1
+        return min(count1,count2)
