@@ -1,0 +1,12 @@
+class Solution:
+    def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+        hand.sort()
+        while(True):
+            if len(hand)==0:
+                return 1
+            a=hand[0]
+            for i in range(0,groupSize):
+                if a+i in hand:
+                    hand.remove(a+i)
+                else:
+                    return 0
