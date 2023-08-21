@@ -1,0 +1,12 @@
+count=0
+som=capacity
+i=-1
+while(i<len(plants)-1):
+    if som>=plants[i+1]:
+        som =som - plants[i+1]
+        i=i+1
+        count=count+1
+    else:
+        count=count+2*(i+1)
+        som=capacity
+return count
