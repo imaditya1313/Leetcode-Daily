@@ -1,0 +1,18 @@
+arr1,arr2=num1.split("+"),num2.split("+")
+if arr1[0].isdigit()==True:
+    a = int(arr1[0])
+else:
+    a = -int(arr1[0][1:])
+if arr1[1][:-1].isdigit()==True:
+    b= int(arr1[1][:-1])
+else:
+    b = -int(arr1[1][1:-1])
+if arr2[0].isdigit()==True:
+    c = int(arr2[0])
+else:
+    c = -int(arr2[0][1:])
+if arr2[1][:-1].isdigit()==True:
+    d = int(arr2[1][:-1])
+else:
+    d = -int(arr2[1][1:-1])
+return str(a*c-b*d)+"+"+str(a*d+b*c)+"i"
