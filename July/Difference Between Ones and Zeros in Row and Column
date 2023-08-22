@@ -1,0 +1,20 @@
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        row,col=[],[]
+        for j in range(0,len(grid[0])):
+            c1=0
+            for i in range(0,len(grid)):
+                c1 = c1 + grid[i][j]
+            c0 = len(grid)-c1
+            col.append([c1,c0])
+        for i in grid:
+            r1=sum(i)
+            r0=len(i)-r1
+            row.append([r1,r0])
+        final=[]
+        for i in row:
+            arr=[]
+            for j in col:
+                arr.append(i[0]+j[0]-i[1]-j[1])
+            final.append(arr)
+        return final
