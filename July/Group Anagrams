@@ -1,0 +1,15 @@
+ans=[]
+for i in strs:
+    ans.append(["".join(sorted(i)),i])
+ans.sort()
+final,arr=[],[]
+i=0
+while(i<len(ans)-1):
+    if ans[i][0]==ans[i+1][0]:
+        ans[i] = ans[i]+[ans[i+1][1]]
+        ans.pop(i+1)
+    else:
+        ans[i] = ans[i][1:]
+        i=i+1
+ans[-1]=ans[-1][1:]
+return ans
