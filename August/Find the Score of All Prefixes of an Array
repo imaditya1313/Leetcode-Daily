@@ -1,0 +1,11 @@
+ans=[]
+maxi=nums[0]
+count=0
+for i in nums:
+    if i>=maxi:
+        count = count +(i+i)
+        maxi=i
+    else:
+        count=count+(i+maxi)
+    ans.append(count)
+return ans
