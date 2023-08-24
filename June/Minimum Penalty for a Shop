@@ -1,0 +1,12 @@
+class Solution:
+    def bestClosingTime(self, customers: str) -> int:
+        mini=count=customers.count("Y")
+        j=-1
+        for i in range(0,len(customers)):
+            if customers[i]=="Y":count-=1
+            else:count = count+1
+            if count<mini:
+                j=i
+                mini=count
+        if j==-1:return 0
+        return j+1
