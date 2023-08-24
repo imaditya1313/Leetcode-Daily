@@ -1,0 +1,15 @@
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        nums=list(set(arr))
+        if len(arr)==k:
+            return 0
+        dicti={}
+        for i in nums:
+            dicti[i]=0
+        for i in arr:
+            dicti[i]+=1
+        a = sorted(dicti.values())
+        for i in range(0,len(a)):
+            k=k-a[i]
+            if k<0:
+                return len(a)-i
