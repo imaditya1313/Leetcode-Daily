@@ -1,0 +1,9 @@
+class Solution:
+    def arrayChange(self, nums: List[int], operations: List[List[int]]) -> List[int]:
+        dicti={}
+        for i in range(0,len(nums)):dicti[nums[i]]=i
+        for i in operations:
+            dicti[i[1]] = dicti[i[0]]
+            del dicti[i[0]]
+        a = list(dict(sorted(dicti.items(),key=lambda x: x[1])).keys())
+        return a
