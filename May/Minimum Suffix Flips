@@ -1,0 +1,16 @@
+class Solution:
+    def minFlips(self, target: str) -> int:
+        a="0"
+        final=""
+        count=0
+        for i in target:
+            if a==i:
+                final = final + a
+            else:
+                count=count+1
+                if a=="0":
+                    a="1"
+                else:
+                    a="0"
+                final = final + a
+        return count
