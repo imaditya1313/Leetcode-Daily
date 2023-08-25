@@ -1,0 +1,12 @@
+class Solution:
+    def maxSum(self, grid: List[List[int]]) -> int:
+        maxi,i,j=0,0,0
+        while(i<len(grid)-2):
+            if j==len(grid[0])-2:
+                i=i+1
+                j=0
+            else:
+                suum = sum(grid[i][j:j+3]) + sum(grid[i+2][j:j+3]) + grid[i+1][j+1]
+                j=j+1
+                maxi=max(suum,maxi)
+        return maxi
