@@ -1,0 +1,16 @@
+class Solution:
+    def monotoneIncreasingDigits(self, n: int) -> int:
+        s =str(n)
+        i,j=0,0
+        while(i<len(s)):
+            if j==len(s) or int(s[j])<int(s[i]):
+                break
+            elif int(s[j])==int(s[i]):
+                j=j+1
+            else:
+                i=j
+                j=j+1
+        if j==len(s) and int(s[j-1])==int(s[i]) or int(s[j-1])==int(s[i])+1:
+            return n
+        s = s[:i]+str(int(s[i])-1)+("9"*(len(s)-i-1))
+        return int(s)
