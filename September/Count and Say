@@ -1,0 +1,18 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        s = "1"
+        while(n!=1):
+            fin = ""
+            i=0
+            j=0
+            while(j<len(s)):
+                if s[i]==s[j]:
+                    j=j+1
+                else:
+                    fin = fin + str(j-i) + s[i]
+                    i=j
+            fin = fin + str(j-i) + s[i]
+            s = fin
+            n=n-1
+        return s
+        
