@@ -1,0 +1,19 @@
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        d = {}
+        for i in range(0,len(groupSizes)):
+            if groupSizes[i] not in d:
+                d[groupSizes[i]] = str(i)+","
+            else:
+                d[groupSizes[i]] = d[groupSizes[i]] + str(i)+","
+        final=[]
+        for i in d:
+            num = d[i].split(",")[:-1]
+            for k in range(0,len(num)):
+                num[k]=int(num[k])
+            arr=[]
+            for j in range(0,len(num),i):
+                arr.append(num[j:j+i])
+            final = final + arr
+        return final
+        
