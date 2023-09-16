@@ -1,0 +1,14 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        col,row = [],[]
+        count,a=0,-1
+        for i in range(0,len(grid)):
+            row.append(max(grid[i]))
+            for j in range(0,len(grid)):
+                a = max(a,grid[j][i])
+            col.append(a)
+            a = -1
+        for i in range(0,len(grid)):
+            for j in range(0,len(grid)):
+                count = count + abs(grid[j][i]-min(col[i],row[j]))
+        return count
