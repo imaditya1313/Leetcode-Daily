@@ -1,0 +1,12 @@
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        count = len("".join(garbage))
+        g,m,p=-1,-1,-1
+        for i in range(0,len(garbage)):
+            if "G" in garbage[i]:g=i
+            if "M" in garbage[i]:m=i
+            if "P" in garbage[i]:p=i
+        if g!=-1:count = count + sum(travel[:g])
+        if p!=-1:count = count + sum(travel[:p])
+        if m!=-1:count = count + sum(travel[:m])
+        return count
