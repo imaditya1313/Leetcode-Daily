@@ -1,0 +1,28 @@
+class Solution:
+    def executeInstructions(self, n: int, startPos: List[int], s: str) -> List[int]:
+        I,J=startPos[0],startPos[1]
+        i,j=0,0
+        arr=[]
+        while(i<len(s)):
+            if s[i]=="R":
+                J=J+1
+            elif s[i]=="L":
+                J=J-1
+            elif s[i]=="U":
+                I=I-1
+            else:
+                I=I+1
+            if I>n-1 or J>n-1 or I<0 or J<0 or i==len(s)-1:
+                if i==len(s)-1 and I<=n-1 and J<=n-1 and I>=0 and J>=0:
+                    arr.append(i-j+1)
+                else:
+                    arr.append(i-j)
+                j=j+1
+                i=j
+                I,J=startPos[0],startPos[1]
+            else:
+                i=i+1
+        return arr
+            
+                
+        
