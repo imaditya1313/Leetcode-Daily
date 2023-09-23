@@ -1,0 +1,10 @@
+class Solution:
+    def partitionString(self, s: str) -> int:
+        i,j,count=0,0,0
+        while(i<len(s)):
+            if s[i] not in s[j:i]:
+                i=i+1
+            else:
+                count=count+1
+                j=i
+        return count+1
