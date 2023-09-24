@@ -1,0 +1,26 @@
+class Solution:
+    def displayTable(self, orders: List[List[str]]) -> List[List[str]]:
+        d,arr,s={},[],set()
+        for i in orders:
+            s.add(i[2])
+            if i[1] not in d:
+                d[i[1]] = i[2]
+            else:
+                d[i[1]] = d[i[1]] +","+i[2]
+        s = ["Table"]+sorted(list(s))
+        for i in d:
+            d1={}
+            for k in s:
+                d1[k] = 0
+            d1["Table"] = int(i)
+            r = d[i].split(",")
+            for j in r:
+                if j in d1:
+                    d1[j] = d1[j] + 1
+            arr.append(list(d1.values()))
+        arr = sorted(arr)
+        for i in arr:
+            for j in range(0,len(i)):
+                i[j]=str(i[j])
+        arr.insert(0, s)
+        return arr
