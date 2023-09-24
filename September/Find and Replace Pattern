@@ -1,0 +1,18 @@
+class Solution:
+    def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
+        arr=[]
+        for i in words:
+            d={}
+            t=0
+            for j in range(0,len(i)):
+                if i[j] in d:
+                    if d[i[j]]!=pattern[j]:
+                        t=1
+                        break
+                else:
+                    d[i[j]] = pattern[j]
+            if t==0:
+                b = list(d.values())
+                if len(b)==len(set(pattern)):
+                    arr.append(i)
+        return arr
