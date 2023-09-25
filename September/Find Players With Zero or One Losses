@@ -1,0 +1,14 @@
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        pla = {}
+        for i in matches:
+            pla[i[0]]=1
+            pla[i[1]]=1
+        ar1,ar2=[],[]
+        for i in pla:
+            if pla[i]==1:
+                ar1.append(i)
+            if pla[i]==0:
+                ar2.append(i)
+        return [sorted(ar1),sorted(ar2)]
+        
