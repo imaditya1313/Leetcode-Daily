@@ -1,0 +1,69 @@
+class Solution:
+    def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
+        row,col,left=[king],[king],[king]
+        final=[]
+        for i in queens:
+            if i[0]+i[1]==king[0]+king[1]:
+                left.append(i)
+            if i[0]==king[0]:
+                col.append(i)
+            if i[1]==king[1]:
+                row.append(i)
+        left.sort()
+        row.sort()
+        col.sort()
+        if len(row)>1 and (row[0]==king or row[-1]==king):
+            if row[0]==king:
+                final.append(row[1])
+            else:
+                final.append(row[-2])
+        elif len(row)>1:
+            for k in range(len(row)):
+                if row[k]==king:
+                    final.append(row[k-1])
+                    final.append(row[k+1])
+                    break
+        if len(col)>1 and (col[0]==king or col[-1]==king):
+            if col[0]==king:
+                final.append(col[1])
+            else:
+                final.append(col[-2])
+        elif len(col)>1:
+            for k in range(len(col)):
+                if col[k]==king:
+                    final.append(col[k-1])
+                    final.append(col[k+1])
+                    break
+        if len(left)>1 and (left[0]==king or left[-1]==king):
+            if left[0]==king:
+                final.append(left[1])
+            else:
+                final.append(left[-2])
+        elif len(left)>1:
+            for k in range(len(left)):
+                if left[k]==king:
+                    final.append(left[k-1])
+                    final.append(left[k+1])
+                    break
+            
+        right=[king]
+        a = min(king[1],king[0])
+        i,j=king[0]-a,king[1]-a
+        while(i<8 and j<8):
+            if [i,j] in queens:
+                right.append([i,j])
+            i=i+1
+            j=j+1
+        right.sort()
+        if len(right)>1 and (right[0]==king or right[-1]==king):
+            if right[0]==king:
+                final.append(right[1])
+            else:
+                final.append(right[-2])
+        elif len(right)>1:
+            for k in range(len(right)):
+                if right[k]==king:
+                    final.append(right[k-1])
+                    final.append(right[k+1])
+                    break
+        return final
