@@ -1,0 +1,25 @@
+class Solution:
+    def rotateTheBox(self, box: List[List[str]]) -> List[List[str]]:
+        final=[]
+        for arr in box:
+            ans=[]
+            count = 0
+            j=0
+            for i in range(0,len(arr)):
+                if arr[i] == "#":
+                    count = count + 1
+                if arr[i]=="*":
+                    ans = ans + ["."]*(i-j-count) + ["#"]*count + ["*"]
+                    j=i+1
+                    count=0
+            ans = ans + ["."]*(len(arr)-j-count) +["#"]*count
+            final.append(ans)
+        final=final[::-1]
+        arr=[]
+        for j in range(0,len(final[0])):
+            ans=[]
+            for i in range(0,len(final)):
+                ans.append(final[i][j])
+            arr.append(ans)
+        return arr
+                        
