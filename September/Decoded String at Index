@@ -1,0 +1,17 @@
+class Solution:
+    def decodeAtIndex(self, s: str, k: int) -> str:
+      count = 0
+      for i in s:
+        if i.isdigit()==False:
+          count = count + 1
+        else:
+          count = count * int(i)
+      for j in range(len(s)-1, -1, -1):
+        char = s[j]
+        if char.isdigit():
+            count //= int(char)
+            k %= count
+        else:
+            if k == 0 or k == count:
+              return char
+            count -= 1
