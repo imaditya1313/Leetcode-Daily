@@ -1,0 +1,12 @@
+class Solution:
+    def countCompleteSubarrays(self, nums: List[int]) -> int:
+        n = len(set(nums))
+        count=0
+        for i in range(0,len(nums)):
+            s = set()
+            s.add(nums[i])
+            for j in range(i,len(nums)):
+                s.add(nums[j])
+                if len(s)==n:
+                    count = count +1
+        return count
