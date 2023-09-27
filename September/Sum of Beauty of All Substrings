@@ -1,0 +1,14 @@
+class Solution:
+    def beautySum(self, s: str) -> int:
+        count = 0
+        for i in range(0,len(s)):
+            d={s[i]:1}
+            for j in range(i+2,len(s)+1):
+                if s[j-1] not in d:
+                    d[s[j-1]] = 1
+                else:
+                    d[s[j-1]] = d[s[j-1]]+1
+                a = sorted(d.values())
+                if len(a)>1:
+                    count = count + a[-1] - a[0]
+        return count
