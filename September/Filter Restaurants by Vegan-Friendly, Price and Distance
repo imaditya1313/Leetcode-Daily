@@ -1,0 +1,16 @@
+class Solution:
+    def filterRestaurants(self, restaurants: List[List[int]], veganFriendly: int, maxPrice: int, maxDistance: int) -> List[int]:
+        arr=[]
+        for i in restaurants:
+            if veganFriendly==1:
+                if i[2]==veganFriendly and i[3]<=maxPrice and i[4]<=maxDistance:
+                    arr.append([i[1],i[0]])
+            else:
+                if i[3]<=maxPrice and i[4]<=maxDistance:
+                    arr.append([i[1],i[0]])
+        arr.sort(reverse = True)
+        final=[]
+        for i in arr:
+            final.append(i[1])
+        return final
+        
