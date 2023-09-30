@@ -1,0 +1,16 @@
+class Solution:
+    def twoEditWords(self, queries: List[str], dictionary: List[str]) -> List[str]:
+        ans=[]
+        for i in queries:
+            for j in dictionary:
+                if len(i)==len(j):
+                    k=0
+                    count = 0
+                    while(k<len(i)):
+                        if i[k]!=j[k]:
+                            count = count +1
+                        k=k+1
+                    if count<3:
+                        ans.append(i)
+                        break
+        return ans
