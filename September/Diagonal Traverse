@@ -1,1 +1,22 @@
-arr[i].split("+")
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        m = len(mat)
+        n = len(mat[0])
+        arr=[]
+        d={}
+        for i in range(0,m+n-1):
+            d[i]=""
+        for i in range(0,m):
+            for j in range(0,n):
+                if i+j in d:
+                    d[i+j] = d[i+j]+str(mat[i][j])+"+"
+        arr = list(d.values())
+        final=[]
+        for i in range(0,len(arr)):
+            a = arr[i].split("+")
+            if i%2==0:
+                a=a[::-1]
+            for j in a:
+                if j!="":
+                    final.append(int(j))
+        return final
