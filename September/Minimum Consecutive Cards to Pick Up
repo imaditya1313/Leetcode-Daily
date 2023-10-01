@@ -1,0 +1,22 @@
+class Solution:
+    def minimumCardPickup(self, cards: List[int]) -> int:
+        d={}
+        for i in range(0,len(cards)):
+            if cards[i] not in d:
+                d[cards[i]] = str(i)
+            else:
+                d[cards[i]] = d[cards[i]]+"+"+str(i)
+        arr = list(d.values())
+        final = len(cards)+1
+        for i in arr:
+            if "+" in i:
+                num = i.split("+")
+                count = int(num[1])-int(num[0])+1
+                for j in range(0,len(num)-1):
+                    a = int(num[j+1])-int(num[j])+1
+                    count = min(count,a)
+                final = min(final,count)
+        if final==len(cards)+1:
+            return -1
+        else:
+            return final
