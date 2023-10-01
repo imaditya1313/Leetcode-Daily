@@ -1,0 +1,15 @@
+class Solution:
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        m=len(nums)
+        n = len(sorted(nums,key = len)[-1])
+        arr=[""]*(n+m)
+        for i in range(0,len(nums)):
+            for j in range(i,i+len(nums[i])):
+                arr[j] = str(nums[i][j-i])+"+"+arr[j]
+        final=[]
+        for i in arr:
+            a = i.split("+")
+            for j in a:
+                if j !="":
+                    final.append(int(j))
+        return final
