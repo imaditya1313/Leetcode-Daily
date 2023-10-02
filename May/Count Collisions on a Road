@@ -1,0 +1,16 @@
+class Solution:
+    def countCollisions(self, directions: str) -> int:
+        count,final = 0,0
+        for i in range(0,len(directions)):
+            if directions[i]=="R":
+                count = count + 1
+            elif directions[i]=="L" and count>0:
+                final = final +count+1
+                count= 0
+            elif directions[i]=="L" and ("S" in directions[:i] or final!=0):
+                final = final+1
+            elif directions[i]=="S":
+                final = final + count
+                count = 0
+        return final
+            
