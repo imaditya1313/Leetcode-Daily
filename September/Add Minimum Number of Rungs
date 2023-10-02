@@ -1,0 +1,8 @@
+class Solution:
+    def addRungs(self, rungs: List[int], dist: int) -> int:
+        rungs = [0]+rungs
+        count=0
+        for i in range(0,len(rungs)-1):
+            if rungs[i]+dist<rungs[i+1]:
+                count = count + ceil((rungs[i+1]-rungs[i])/dist)-1
+        return count       
