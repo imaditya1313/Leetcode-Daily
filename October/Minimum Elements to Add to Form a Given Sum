@@ -1,0 +1,7 @@
+class Solution:
+    def minElements(self, nums: List[int], limit: int, goal: int) -> int:
+        a=goal - sum(nums)
+        if a%limit==0:
+            return int(abs(a)/limit)
+        else:
+            return int(abs(a)/limit)+1
