@@ -1,0 +1,37 @@
+class Solution:
+    def solveEquation(self, equation: str) -> str:
+        arr=equation.split("=")
+        if arr[0][0]=="-":s=""
+        else:s="+"
+        x,a=[],[]
+        for i in range(0,len(arr[0])):
+            if arr[0][i]=="+" or arr[0][i]=="-":
+                if "x" in s and len(s)==2:
+                    x.append(int(s[0]+"1"))
+                elif "x" in s and len(s)>2:
+                    x.append(int(s[:-1]))
+                elif len(s)>1:
+                    a.append(int(s))
+                s=arr[0][i]
+            else:s = s + arr[0][i]
+        if "x" in s and len(s)==2:x.append(int(s[0]+"1"))
+        elif "x" in s and len(s)>2:x.append(int(s[:-1]))
+        else:a.append(int(s))
+        X1,N1 = sum(x),sum(a)
+        if arr[1][0]=="-":s=""
+        else:s="+"
+        x,a=[],[]
+        for i in range(0,len(arr[1])):
+            if arr[1][i]=="+" or arr[1][i]=="-":
+                if "x" in s and len(s)==2:x.append(int(s[0]+"1"))
+                elif "x" in s and len(s)>2:x.append(int(s[:-1]))
+                elif len(s)>1:a.append(int(s))
+                s=arr[1][i]
+            else:s = s + arr[1][i]
+        if "x" in s and len(s)==2:x.append(int(s[0]+"1"))
+        elif "x" in s and len(s)>2:x.append(int(s[:-1]))
+        else:a.append(int(s))
+        X2,N2 = sum(x),sum(a)
+        if X2-X1==0 and N2-N1!=0:return "No solution"
+        if X2-X1==0 and N2-N1==0:return "Infinite solutions"
+        return "x="+str(int((N2-N1)/(X1-X2)))
