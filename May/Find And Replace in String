@@ -1,0 +1,17 @@
+class Solution:
+    def findReplaceString(self, s: str, indices: List[int], sources: List[str], targets: List[str]) -> str:
+        final=""
+        i=0
+        while(i<len(s)):
+            if i not in indices:
+                final = final + s[i]
+                i=i+1
+            for j in range(0,len(indices)):
+                if i==indices[j]:
+                    if s[i:i+len(sources[j])]==sources[j]:
+                        final = final+targets[j]
+                        i=i+len(sources[j])
+                    elif i not in indices[j+1:]:
+                        final = final + s[i:i+len(sources[j])]    
+                        i=i+len(sources[j])
+        return final
