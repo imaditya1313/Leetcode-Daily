@@ -1,0 +1,20 @@
+class Solution:
+    def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
+        arr=[]
+        d={}
+        for i in words2:
+            s = set(i)
+            for j in s:
+                if j in d:
+                    a = max(d[j],i.count(j))
+                    d[j]=a
+                else:
+                    d[j] = i.count(j)
+        for i in words1:
+            print(i)
+            for j in d:
+                if i.count(j)<d[j]:
+                    break
+            else:
+                arr.append(i)
+        return arr
