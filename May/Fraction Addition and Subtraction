@@ -1,0 +1,26 @@
+class Solution:
+    def fractionAddition(self, expression: str) -> str:
+        expression = expression.replace("-","+-")
+        arr = expression.split("+")
+        num,den=[],[]
+        for i in arr:
+            if i!="":
+                a = i.split("/")
+                num.append(int(a[0]))
+                den.append(int(a[1]))
+        lcm = 1
+        for i in den:
+            lcm = lcm*i//gcd(lcm, i)
+        for i in range(0,len(num)):
+            num[i] = num[i]*int(lcm/den[i])
+        a = sum(num)
+        i=2
+        while(i<min(abs(a),abs(lcm))+1):
+            if a%i==0 and lcm%i==0:
+                a = int(a/i)
+                lcm = int(lcm/i)
+            else:
+                i=i+1
+        if a==0:
+            return "0/1"
+        return str(a)+"/"+str(lcm)
