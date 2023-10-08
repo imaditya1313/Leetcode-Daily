@@ -1,0 +1,21 @@
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+        if len(s)==1:
+            return s
+        d={}
+        for i in s:
+            if i in d:
+                d[i] = d[i]+1
+            else:
+                d[i]=1
+            if d[i]>ceil(len(s)/2):
+                return ""
+        d = sorted(d.items(),reverse=True,key=lambda x:x[1])
+        arr = [[i[0],i[1]]for i in d]
+        final=""
+        while(len(final)<len(s)):
+            final = final + arr[0][0] + arr[1][0]
+            arr[0][1] = arr[0][1]-1
+            arr[1][1] = arr[1][1]-1
+            arr = sorted(arr,reverse=True,key = lambda x:x[1])
+        return final[:len(s)]
