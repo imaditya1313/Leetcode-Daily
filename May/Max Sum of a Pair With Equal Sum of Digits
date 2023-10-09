@@ -1,0 +1,21 @@
+class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        nums.sort()
+        d={}
+        for i in nums:
+            sum=0
+            for j in str(i):
+                sum = sum + int(j)
+            if sum in d:
+                d[sum] = d[sum] +","+str(i)
+            else:
+                d[sum] = str(i)
+        final=-1
+        b=-1
+        for i in d:
+            a = d[i].split(",")
+            if len(a)>1:
+                b = int(a[-1])+int(a[-2])
+                print(b)
+            final = max(final,b)
+        return final
