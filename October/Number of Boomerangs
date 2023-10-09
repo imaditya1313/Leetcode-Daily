@@ -1,0 +1,16 @@
+class Solution:
+    def numberOfBoomerangs(self, points: List[List[int]]) -> int:
+        count = 0
+        for i in range(len(points)):
+            d={}
+            for j in range(len(points)):
+                a = abs(points[i][0] - points[j][0])**2 + abs(points[i][1] - points[j][1])**2
+                if a in d:
+                    d[a] =d[a] +","+str(j)
+                else:
+                    d[a] = str(j)
+            for i in d:
+                if "," in d[i]:
+                    b = d[i].split(",")
+                    count = count + (len(b)*(len(b)-1))
+        return count
