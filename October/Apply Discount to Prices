@@ -1,0 +1,14 @@
+class Solution:
+    def discountPrices(self, sentence: str, discount: int) -> str:
+        arr=sentence.split(" ")
+        final=[]
+        for i in arr:
+            if i=="$" or i[0]!="$":
+                final.append(i)
+            else:
+                if i[1:].isdigit()==False:
+                    final.append(i)
+                else:
+                    a = format(int(i[1:])-(int(i[1:])*discount)/100,".2f")
+                    final.append("$"+str(a))
+        return " ".join(final)
