@@ -1,0 +1,20 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        s1=set()
+        d={}
+        final=[]
+        for i in s:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] = d[i] + 1
+        j=0
+        for i in range(0,len(s)):
+            s1.add(s[i])
+            d[s[i]] = d[s[i]]-1
+            if d[s[i]]==0:
+                s1.remove(s[i])
+            if s1==set():
+                final.append(i+1-j)
+                j=i+1
+        return final
