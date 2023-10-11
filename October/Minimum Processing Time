@@ -1,0 +1,11 @@
+class Solution:
+    def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
+        tasks.sort()
+        processorTime.sort(reverse=True)
+        j=-1
+        final = 0
+        for i in range(len(processorTime)):
+            a = processorTime[i] + tasks[j+4]
+            final = max(final,a)
+            j = j+4
+        return final      
