@@ -1,0 +1,12 @@
+class Solution:
+    def minimumSum(self, n: int, k: int) -> int:
+        avoid,count,i=[],0,1
+        while(n!=0):
+            if i not in avoid:
+                count = count + i
+                if i<k:
+                    avoid.append(k-i)
+                n=n-1
+            i=i+1
+        return count
+        
