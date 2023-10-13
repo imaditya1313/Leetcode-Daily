@@ -1,0 +1,16 @@
+class Solution:
+    def replaceWords(self, dictionary: List[str], sentence: str) -> str:
+        a=set()
+        for i in dictionary:
+            a.add(len(i))
+        a = list(a)
+        arr = sentence.split(" ")
+        for i in range(len(arr)):
+            for j in a:
+                if j<=len(arr[i]):
+                    if arr[i][:j] in dictionary:
+                        arr[i] = arr[i][:j]
+                        break
+                else:
+                    break
+        return " ".join(arr)
