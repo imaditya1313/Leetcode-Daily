@@ -1,0 +1,18 @@
+class Solution:
+    def findingUsersActiveMinutes(self, logs: List[List[int]], k: int) -> List[int]:
+        d={}
+        for i in logs:
+            if i[0] in d:
+                d[i[0]]=d[i[0]]+"+"+str(i[1])
+            else:
+                d[i[0]] = str(i[1])
+        arr = list(d.values())
+        final1=[]
+        for i in arr:
+            a = len(set(i.split("+")))
+            final1.append(a)
+        final = set(final1)
+        result=[0]*k
+        for i in final1:
+            result[i-1] = final1.count(i)
+        return result
