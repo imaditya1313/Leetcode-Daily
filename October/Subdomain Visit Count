@@ -1,0 +1,16 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        d={}
+        for i in cpdomains:
+            a = i.split(" ")
+            b = a[1].split(".")
+            for i in range(0,len(b)):
+                c = ".".join(b[i:])
+                if c in d:
+                    d[c] = int(d[c]) + int(a[0])
+                else:
+                    d[c] = int(a[0])
+        arr=[]
+        for i in d:
+            arr.append(str(d[i])+" "+i)
+        return arr
