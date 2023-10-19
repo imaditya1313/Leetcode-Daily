@@ -1,0 +1,14 @@
+class Solution:
+    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+        count = 0
+        for i in range(0,len(grumpy)):
+            if grumpy[i]==0:
+                count = customers[i] + count
+                customers[i] = 0
+        print(customers)
+        final= sum(customers[:minutes])
+        a = sum(customers[:minutes])
+        for i in range(minutes,len(customers)):
+            a = a + customers[i] - customers[i-minutes]
+            final = max(a,final)
+        return count+final
