@@ -1,0 +1,16 @@
+class Solution:
+    def tupleSameProduct(self, nums: List[int]) -> int:
+        from math import comb
+        ans = 0
+        freq = {}
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)): 
+                key = nums[i] * nums[j]
+                if key in freq:
+                    freq[key] = freq[key]+1
+                else:
+                    freq[key] = +1
+        for i in freq:
+            if freq[i]>1:
+                ans = ans + 8*comb(freq[i],2)
+        return ans
