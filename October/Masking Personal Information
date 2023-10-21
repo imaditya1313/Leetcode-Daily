@@ -1,0 +1,22 @@
+class Solution:
+    def maskPII(self, s: str) -> str:
+        f=""
+        if "@" not in s:
+            for i in s:
+                if i.isdigit()==True:
+                    f=f+i
+            fst,lst = f[:-10],f[-10:]
+            if len(fst)==0:
+                return "***-***-"+lst[-4:]
+            elif len(fst)==1:
+                return "+*-***-***-"+lst[-4:]
+            elif len(fst)==2:
+                return "+**-***-***-"+lst[-4:]
+            elif len(fst)==3:
+                return "+***-***-***-"+lst[-4:]
+        else:
+            for i in s:
+                if i.isdigit()!=True:
+                    f=f+i.lower()
+            f = f.split("@")
+            return f[0][0]+"*****"+f[0][-1]+"@"+f[1]     
