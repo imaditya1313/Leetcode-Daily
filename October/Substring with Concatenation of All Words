@@ -1,0 +1,16 @@
+class Solution:
+    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        words.sort()
+        n2 = len(words[0])*len(words)
+        final=[]
+        for i in range(0,len(s)-n2+1):
+            arr=[]
+            f=""
+            for j in s[i:i+n2]:
+                f=f+j
+                if len(f)==len(words[0]):
+                    arr.append(f)
+                    f=""
+            if sorted(arr)==words:
+                final.append(i)
+        return final
