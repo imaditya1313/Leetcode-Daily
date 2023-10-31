@@ -1,0 +1,23 @@
+class Solution:
+    def magicalString(self, n: int) -> int:
+        s="1"
+        arr=["1","2"]
+        i=1
+        j=0
+        while(len(s)<n):
+            if j==len(s)-1:
+                if s[j]=="1":
+                    f = arr[i]*2
+                elif s[-1]=="2":
+                    f = arr[i]
+            else:
+                f = arr[i]*int(s[j+1])
+            s = s + f
+            if i==0:
+                i=1
+            elif i==1:
+                i=0
+            j=j+1
+        s = s[:n]
+        return s.count("1")
+        
