@@ -1,0 +1,22 @@
+class Solution:
+    def largestTimeFromDigits(self, arr: List[int]) -> str:
+        def perm(nums, end=[],arr=[]):
+            if(len(nums) == 0):
+                arr.append(end)
+            else:
+                for i in range(len(nums)):
+                    perm(nums[:i] + nums[i+1:], end + nums[i:i+1])
+            return arr
+        res = perm(arr)
+        arr=[]
+        t = 0
+        for i in res:
+            if i[0]<2 and i[2]<6:
+                arr.append(i)
+            elif i[0]==2 and i[1]<4 and i[2]<6:
+                arr.append(i)
+        arr.sort()
+        if len(arr)==0:
+            return ""
+        a = arr[-1]
+        return str(a[0])+str(a[1])+":"+str(a[2])+str(a[3])     
