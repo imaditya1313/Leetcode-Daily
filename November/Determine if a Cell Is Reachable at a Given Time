@@ -1,0 +1,9 @@
+class Solution:
+    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
+        if sx == fx and sy == fy:
+            return t > 1 or t == 0
+        height_difference = abs(sy - fy)
+        width_difference = abs(sx - fx)
+        extra_time = abs(height_difference - width_difference)
+        return (min(height_difference, width_difference) + extra_time) <= t
+        
