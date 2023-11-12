@@ -1,0 +1,20 @@
+class Solution:
+    def maxDiff(self, num: int) -> int:
+        num = str(num)
+        for i in range(len(num)):
+            if num[i]!="9":
+                break
+        for j in range(len(num)):
+            if num[j]>"1":
+                break
+        a = num.replace(str(num[i]),str("9"))
+        if num[j]!="1":
+            if j==0:
+                b = num.replace(str(num[j]),str("1"))
+            elif j==-1:
+                b = num
+            else:
+                b = num.replace(str(num[j]),str("0"))
+        else:
+            b = num
+        return int(a) - int(b)
