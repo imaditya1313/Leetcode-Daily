@@ -1,0 +1,14 @@
+class Solution:
+    def countNicePairs(self, nums: List[int]) -> int:
+        num = [int(str(i)[::-1]) for i in nums]
+        d = {}
+        for i in range(0,len(nums)):
+            if nums[i]-num[i] in d:
+                d[nums[i]-num[i]] = d[nums[i]-num[i]] + 1
+            else:
+                d[nums[i]-num[i]]= 1
+        count = 0
+        for i in d:
+            n = d[i] - 1
+            count = count + (n*(n+1))//2
+        return count%1000000007
