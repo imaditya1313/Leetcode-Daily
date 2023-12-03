@@ -1,0 +1,9 @@
+class Solution:
+    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+        count = 0
+        for i in range(len(points)-1):
+            a = points[i]
+            b = points[i+1]
+            count = count + max(abs(a[0]-b[0]),abs(a[1]-b[1]))
+        return count
+        
