@@ -1,0 +1,20 @@
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        row = []
+        col = []
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                if mat[i][j]==1:
+                    row.append(i)
+                    col.append(j)
+        app1 = []
+        app2 = []
+        for i in range(len(row)):
+            if row[i] not in row[:i]+row[i+1:]:
+                app1.append(i)
+        for i in range(len(col)):
+            if col[i] not in col[:i]+col[i+1:]:
+                app2.append(i)
+        a = list(set(app1).intersection(set(app2)))
+        return len(a)
+        
