@@ -1,0 +1,17 @@
+class Solution:
+    def minCost(self, colors: str, neededTime: List[int]) -> int:
+        count = 0
+        prev = ""
+        i=0
+        while(i<len(colors)):
+            if colors[i]==prev:
+                if neededTime[i] < neededTime[i-1]: a=i
+                else:a = i-1
+                count = count + neededTime[a]
+                colors = colors[:a]+colors[a+1:]
+                neededTime.pop(a)
+            else:
+                prev = colors[i]
+                i=i+1
+        return count
+        
